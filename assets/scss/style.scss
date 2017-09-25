@@ -221,82 +221,6 @@ body {
   }
 }
 
-.infinite-right {
-  -webkit-animation: moveright 60s linear infinite;
-  animation: moveright 60s linear infinite;
-}
-@-webkit-keyframes moveright {
-  from {
-    background-position: 0;
-  }
-
-  to {
-    background-position: 4500px;
-  }
-}
-
-.infinite-spin {
-  -webkit-animation: infinitespin 10s infinite linear;
-  animation: infinitespin 10s infinite linear;
-}
-@-webkit-keyframes infinitespin {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-.infinite-grow {
-  -webkit-animation: infinitegrow 3.33s infinite linear;
-  animation: infinitegrow 3.33s infinite linear;
-}
-@-webkit-keyframes infinitegrow {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  50% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-.infinite-opacity {
-  -webkit-animation: opac 3.33s infinite linear;
-  animation: opac 3.33s infinite linear;
-}
-
-@-webkit-keyframes opac {
-  0% {
-    opacity: 0.65;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.65;
-  }
-}
-
-
-.infinite-both {
-  -webkit-animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
-  animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
-}
-
 canvas {
   display: block;
   vertical-align: bottom;
@@ -389,6 +313,7 @@ canvas {
   width: 100%;
   z-index: 3;
   top: 0px !important;
+  opacity: 0.33;
   &.squig1 {
     top: 33% !important;
     height: 50px;
@@ -424,4 +349,81 @@ canvas {
   background-position: 50% 50%;
   background-size: cover;
   @include gradient(0deg, rgba(#fff,0) 0%, rgba(#fff, 0) 50%);
+}
+
+/* ---- Animations ---- */
+.infinite-right {
+  -webkit-animation: moveright 60s linear infinite;
+  animation: moveright 60s linear infinite;
+}
+@-webkit-keyframes moveright {
+  from {
+    background-position: 0;
+  }
+
+  to {
+    background-position: 4500px;
+  }
+}
+
+.infinite-spin {
+  -webkit-animation: infinitespin 42s infinite linear;
+  animation: infinitespin 42s infinite linear;
+}
+@-webkit-keyframes infinitespin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.infinite-grow {
+  -webkit-animation: infinitegrow 3.33s infinite linear;
+  animation: infinitegrow 3.33s infinite linear;
+}
+@-webkit-keyframes infinitegrow {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.infinite-opacity {
+  -webkit-animation: opac 3.33s infinite linear;
+  animation: opac 3.33s infinite linear;
+}
+
+@-webkit-keyframes opac {
+  0% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.65;
+  }
+}
+
+
+.infinite-both {
+  -webkit-animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
+  animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
 }
