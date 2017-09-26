@@ -49,8 +49,9 @@ body {
   font-family: $font-body;
   text-align: center;
   color: #fff;
-  background: #fff url('img/bg-coprint-main.jpg') center center no-repeat;
-  //background: #fff;
+  background: #fff;
+  //background: #fff url('img/bg-coprint-main.jpg') center center no-repeat;
+  //background: #fff url('img/bg-coprint-alt.jpg') center center no-repeat;
   background-size: cover;
   text-shadow: 0 0.2rem 0.2rem rgba(0,0,0,.5);
 }
@@ -91,6 +92,39 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 2rem;
+
+  p.lead {
+    a {
+      display: block;
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      letter-spacing: 2px;
+      color: #333;
+      text-shadow: 0 2px 3px rgba(#212121, .5);
+
+      &:hover {
+        transform: scale(.9);
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(#212121, .2);
+      }
+    }
+  }
+
+  a {
+    &.btn-large {
+      transition: all 0.3s ease-in-out;
+
+      i {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        i {
+          background-color: $vma-teal !important;
+        }
+      }
+    }
+  }
 }
 /*
  * Header
@@ -143,16 +177,42 @@ body {
     font-family: $font-header;
     font-weight: 700;
     font-style: italic;
+    position: relative;
     letter-spacing: 3px;
     text-transform: uppercase;
     text-shadow: none;
+
+    span {
+      position: relative;
+      z-index: 4;
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      z-index: 3;
+      bottom: 8px;
+      display: block;
+      width: 100%;
+      height: 18px;
+      content: '';
+      vertical-align: middle;
+      background-color: rgba($vma-teal, .3);
+    }
+    &::after {
+      content: '';
+      bottom: initial;
+      top: 0;
+      height: 2px;
+      background-color: rgba($vma-teal, 0.6);
+    }
     @media (max-width: 575px) {
       font-size: 32px;
     }
   }
 
   &-logo {
-    width: 100px;
+    width: 125px;
     height: auto;
   }
 }
@@ -189,7 +249,7 @@ body {
 /*
  * Affix and center
  */
-@media (min-width: 0em /* 40em org */) {
+@media (min-width: 0 /* 40em org */) {
   /* Pull out the header and footer */
   .masthead {
     position: fixed;
@@ -212,7 +272,6 @@ body {
     /* Must be percentage or pixels for horizontal alignment */
   }
 }
-
 @media (min-width: 62em) {
   .cover-container,
   .mastfoot,
@@ -228,64 +287,64 @@ canvas {
 
 .parallax-scene {
   position: absolute;
+  z-index: 9;
   top: 0;
   overflow: hidden;
   width: 100%;
   height: 100%;
   text-shadow: none;
-  z-index: 9;
+
   .layer {
     font-family: $font-header;
     font-size: 172px;
     font-weight: bold;
     position: absolute !important;
     @media (max-width: 575px) {
-        font-size: 100px !important;
+      font-size: 100px !important;
     }
   }
-
   // & Ampersand
   #one {
     font-size: 350px;
+    z-index: 5;
     top: initial !important;
     right: 10% !important;
     bottom: -200px !important;
     left: initial !important;
-    z-index: 5;
     color: rgba($vma-navy, .5);
     @media (max-width: 575px) {
-        bottom: 0px !important;
+      bottom: 0 !important;
     }
   }
-
   // Letter V
   #two {
     font-size: 400px;
+    z-index: 5;
     top: -150px !important;
     right: initial !important;
     bottom: initial !important;
     left: -50px !important;
     margin-right: auto;
     margin-left: auto;
-    color: rgba($vma-sea, .7);
-    z-index: 5;
+    //color: rgba($vma-sea, .7);
+    color: rgba($vma-teal, .9);
   }
-
   // Letter M
   #three {
     font-size: 300px;
+    z-index: 5;
     top: 0 !important;
     right: 0 !important;
     bottom: initial !important;
     left: initial !important;
     margin-right: auto;
     margin-left: auto;
-    color: rgba($vma-gold, .7);
-    z-index: 5;
+    // color: rgba($vma-gold, .7);
+    color: rgba($vma-teal, .9);
   }
-
   // Letter A
   #four {
+    z-index: 5;
     top: initial !important;
     right: initial !important;
     bottom: 0 !important;
@@ -293,49 +352,54 @@ canvas {
     margin-right: auto;
     margin-left: auto;
     color: rgba($vma-teal, .9);
-    z-index: 5;
   }
-
   // CMYK SVG
   #five {
     position: relative !important;
     z-index: 4;
-    top: 255px !important;
+    top: 25% !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin: 0 auto;
   }
 }
 // Zigs!
+
 #zigzag {
-  background-image: url('img/svg/zigzag.svg');
-  background-position: 0 0;
-  background-repeat: repeat-x;
   position: absolute !important;
-  height: 200px;
-  width: 100%;
   z-index: 3;
-  top: 0px !important;
+  top: 0 !important;
+  width: 100%;
+  height: 200px;
   opacity: 0.33;
+  background-image: url('img/svg/zigzag.svg');
+  background-repeat: repeat-x;
+  background-position: 0 0;
+
   &.squig1 {
     top: 33% !important;
-    height: 50px;
     width: 200px;
+    height: 50px;
   }
+
   &.squig2 {
-    height: 100px;
-    width: 300px;
+    z-index: 4;
     top: initial !important;
     bottom: 0 !important;
     left: 25% !important;
-    z-index: 4;
+    width: 300px;
+    height: 100px;
   }
+
   &.squig3 {
     position: relative !important;
-    height: 9px;
-    width: 50%;
-    margin: 0 auto;
     z-index: 99;
+    width: 50%;
+    height: 9px;
+    margin: 0 auto;
   }
 }
-
 /* ---- particles.js container ---- */
 #particles-js {
   position: absolute;
@@ -350,7 +414,6 @@ canvas {
   background-size: cover;
   @include gradient(0deg, rgba(#fff,0) 0%, rgba(#fff, 0) 50%);
 }
-
 /* ---- Animations ---- */
 .infinite-right {
   -webkit-animation: moveright 60s linear infinite;
@@ -407,7 +470,6 @@ canvas {
   -webkit-animation: opac 3.33s infinite linear;
   animation: opac 3.33s infinite linear;
 }
-
 @-webkit-keyframes opac {
   0% {
     opacity: 0.65;
@@ -422,8 +484,12 @@ canvas {
   }
 }
 
-
 .infinite-both {
   -webkit-animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
   animation: opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
+}
+
+.infinite-triple {
+  -webkit-animation: infinitespin 3s infinite linear, opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
+  animation: infinitespin 3s infinite linear, opac 3.33s infinite linear, infinitegrow 3.33s infinite linear;
 }
